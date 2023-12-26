@@ -1,0 +1,46 @@
+﻿@model ML.Orders
+@{
+    ViewBag.Title = "Report3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Report3</h2>
+
+@if (Model.OrderS != null)
+{
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="table table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>OrderDate</th>
+                            <th>CompanyName</th>
+                            <th>OrderID</th>
+                            <th>Quantity</th>
+                            <th>ProductName</th>
+                            <th>CompanyNameSuppliers</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (ML.Orders order in Model.OrderS)
+                        {
+
+                            <tr>
+                                <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                                <td>@order.SupplierS.CompanyName</td>
+                                <td>@order.OrderID</td>
+                                <td>@order.DetailS.Quantity</td>
+                                <td>@order.ProductS.ProductName</td>
+                                <td>@order.SupplierS.CompanyName</td>
+                                <td>@order.SupplierS.City</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

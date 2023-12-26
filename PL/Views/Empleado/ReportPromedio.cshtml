@@ -1,0 +1,40 @@
+﻿@model ML.Products
+@{
+    ViewBag.Title = "ReportPromedio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Promedio</h2>
+
+@if (Model.ProductS != null)
+{
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="table table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ProductId</th>
+                            <th>ProductName</th>
+                            <th>CategoryId</th>
+                            <th>CategoryName</th>
+                            <th>UnitePrice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ML.Products products in Model.ProductS)
+                        {
+                            <tr>
+                                <td>@products.ProductID</td>
+                                <td>@products.ProductName</td>
+                                <td>@products.CategorieS.CategoryID</td>
+                                <td>@products.CategorieS.CategoryName</td>
+                                <td>@products.UnitPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,40 @@
+﻿@model ML.Products
+@{
+    ViewBag.Title = "ReportDescontinuado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Descontinuado</h2>
+
+@if (Model.ProductS != null)
+{
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="table table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ProductId</th>
+                            <th>ProductName</th>
+                            <th>Discontinued</th>
+                            <th>SupplierId</th>
+                            <th>UnitPrice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ML.Products products in Model.ProductS)
+                        {
+                            <tr>
+                                <td>@products.ProductID</td>
+                                <td>@products.ProductName</td>
+                                <td>@products.Discontinued</td>
+                                <td>@products.SupplierID</td>
+                                <td>@products.UnitPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

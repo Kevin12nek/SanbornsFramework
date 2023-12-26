@@ -1,0 +1,99 @@
+﻿@model ML.Orders
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Report</h2>
+
+
+<br />
+
+<div>
+    @using (Html.BeginForm("Report", "Empleado", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @*<div class="row">
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Year, new { @class = "form-control hiden" })
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Anyos)
+                    @Html.DropDownListFor(model => model.Anyos.AnyO, new SelectList(Model.Anyos.Anyos), "Seleccione una opción")
+                </div>
+                @Html.HiddenFor(model => model.Anyos.Anyos)
+            </div>*@
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Year)
+                    @Html.DropDownListFor(model => model.Year, new SelectList(Model.Anyos.Anyos), "Seleccione una opción")
+                </div>
+                @Html.HiddenFor(model => model.Year)
+            </div>
+        @*</div>*@
+
+            <div class="col-md-4">
+                <input type="submit" data-toggle="modal" class="btn btn-success" value="Buscar" />
+            </div>
+
+        @*</div>*@
+
+
+            }
+        </div>
+
+
+<br />
+
+
+
+@if (Model.OrderS != null)
+{
+    <div class="row table-responsive">
+        <div class="col col-md-12">
+
+            <table class="table table-bordered table-hover">
+
+                <thead>
+                    <tr>
+                        <th>OrderDate</th>
+                        <th>CompanyName</th>
+                        <th>OrderID</th>
+                        <th>Quantity</th>
+                        <th>ProductName</th>
+                        <th>CompanyNameSuppliers</th>
+                        <th>City</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (ML.Orders order in Model.OrderS)
+                    {
+                        <tr>
+
+                            <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                            <td>@order.SupplierS.CompanyName</td>
+                            <td>@order.OrderID</td>
+                            <td>@order.DetailS.Quantity</td>
+                            <td>@order.ProductS.ProductName</td>
+                            <td>@order.SupplierS.CompanyName</td>
+                            <td>@order.SupplierS.City</td>
+
+                        </tr>
+
+
+
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+}
+
